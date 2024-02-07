@@ -23,6 +23,10 @@ class TaskSerializer(serializers.ModelSerializer):
         
     
     def validate_complete_on(self, value):
+        """
+        Validate the `complete_on` field, only on POST requests.
+        - `completed_on` datetime should not be less than current datetime
+        """
         if self.context['request'].method == 'POST':
             if value:
                 if value < timezone.now():
