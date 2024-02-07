@@ -21,7 +21,7 @@ make coverage 			Run coverage
 make coverage-report	Generate coverage report
 make super-user     	Create super user
 make make-migrations 	Make migrations
-make migrate        	Migrate
+make make-migrate       Migrate
 make build-dev      	Build and run dev environment
 make stop-dev       	Stop dev environment
 make stop-prod      	Stop prod environment
@@ -67,6 +67,13 @@ super-user:
 make-migrations:
 	docker exec -it $(BACKEND_APP_NAME) $(SHELL) "-c" \
 	"python manage.py makemigrations"
+
+
+.PHONY: loaddata
+loaddata:
+	docker exec -it $(BACKEND_APP_NAME) $(SHELL) "-c" \
+	"python manage.py loaddata fixtures/*.json"
+
 
 .PHONY: make-migrate
 make-migrate:

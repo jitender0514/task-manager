@@ -5,7 +5,7 @@ services:
     container_name: "${APP_NAME}-backend"
     build:
       context: .
-      dockerfile: deployment/Dockerfile
+      dockerfile: deployment/backend/Dockerfile
       args:
         - APP_MODE=${APP_MODE}
         - APP_NAME=${APP_NAME}
