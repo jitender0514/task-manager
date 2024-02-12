@@ -1,6 +1,10 @@
 # django-quickstart
 
-This quickstart provides an easy django + Docker + Postgres setup to initialize the application.
+This quickstart provides an easy django + React + Docker + Postgres setup to initialize the application.
+
+## Demo
+
+![](https://github.com/jitender0514/task-manager/blob/dev/Docs/Demo.gif)
 
 
 ## Features
