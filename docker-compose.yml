@@ -23,6 +23,29 @@ services:
       db:
         condition: service_healthy
     command: [ "/bin/sh", "/app/deployment/scripts/django/start.sh" ]
+  
+  frontend:
+    container_name: "${APP_NAME}-frontend"
+    build: 
+      context: .
+      dockerfile: deployment/frontend/Dockerfile
+      args:
+        - APP_MODE=${NODE_MODE}
+        - APP_NAME=${NODE_APP_NAME}
+        - APP_PORT=${NODE_PORT}
+    volumes:
+      - ./frontend:/usr/src/app/
+      - ./deployment/scripts:/app/deployment/scripts/
+      # One-way volume to use node_modules from inside image
+      - /app/node_modules
+    env_file: .env
+    ports:
+      - "${NODE_PORT}:${NODE_PORT}"
+    environment:
+      - NODE_MODE=development
+    depends_on:
+      - backend
+    command: [ "/bin/sh", "/app/deployment/scripts/react/start.sh" ]
 
   db:
     image: postgres:15.2-alpine
