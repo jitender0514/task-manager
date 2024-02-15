@@ -11,6 +11,7 @@ This quickstart provides an easy django + React + Docker + Postgres setup to ini
 
 - **Django** web application framework
 - **PostgreSQL** database
+- **React** JavaScript library
 
 
 ## Included Packages and Tools 🛠️
@@ -23,6 +24,7 @@ This quickstart provides an easy django + React + Docker + Postgres setup to ini
 
 - Docker & Docker Compose - [Install and Use Docker](https://www.tutorialspoint.com/docker/docker_installation.htm)
 - Python 3.11 or higher - [Download and install Python](https://www.python.org/downloads/)
+- Node 20 or higher - [Download and install](https://nodejs.org/en/download)
 - Make (optional for shortcuts) - [Configure and usage of Makefile](https://earthly.dev/blog/docker-and-makefiles/)
 
 ---
@@ -50,11 +52,24 @@ This quickstart provides an easy django + React + Docker + Postgres setup to ini
       Copy-Item -Path env.example -Destination .env
      ```
 
+4. **Copy the `frontend/env.example` file to `frontend/.env` and update the values as needed:**  
+
+   - **For Linux/macOS:**  
+     ```bash
+     cp frontend/env.example frontend/.env
+     ```
+   - **For Windows (Command Prompt):**  
+     ```cmd
+      Copy-Item -Path frontend/env.example -Destination frontend/.env
+     ```
+
 ---
 
 ## How to  Setup
 
 ### Development Prerequisites
+
+### Backend Setup [Goto `backend` folder]
 
 1. **Create a virtual environment:**
     ```bash
@@ -90,7 +105,21 @@ This quickstart provides an easy django + React + Docker + Postgres setup to ini
 
 You can now access the application at http://localhost:8000. The development environment allows for immediate reflection of code changes.
 
-### Production Setup
+
+### Frontend Setup (node 20) [Goto `frontend` folder]
+
+1. **Install requirements:**
+    ```bash
+    npm install
+    ```
+2. **Run server:**
+    ```bash
+    npm run dev
+    ```
+
+You can now access the application at http://localhost:5173. (frontend is dependent on backend APIs, make sure backend is running) 
+
+<!-- ### Production Setup
 
 1. **Build the image and run the container:**  
 
@@ -106,7 +135,7 @@ You can now access the application at http://localhost:8000. The development env
    - Or, use the shortcut:
      ```bash
        make build-prod
-     ```
+     ``` -->
 
 ---
 
